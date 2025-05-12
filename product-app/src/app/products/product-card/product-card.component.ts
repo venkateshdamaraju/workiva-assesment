@@ -24,3 +24,5 @@ export class ProductCardComponent {
     this.viewDetails.emit(this.product.id);
   }
 }
+
+
