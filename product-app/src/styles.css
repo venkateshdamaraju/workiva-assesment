@@ -57,7 +57,7 @@ main {
   flex: 1;
 }
 
-/* Animations */
+
 .badge {
   transition: all 0.3s;
 }
@@ -66,7 +66,7 @@ main {
   transform: scale(1.05);
 }
 
-/* Responsive adjustments */
+
 @media (max-width: 768px) {
   .card-img-top {
     height: 200px;

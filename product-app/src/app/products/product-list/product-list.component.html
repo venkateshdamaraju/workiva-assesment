@@ -9,8 +9,6 @@
             <thead class="table-dark">
               <tr>
                 <th class="text-center">Name</th>
-                <!-- <th class="text-center">Price</th> -->
-                <!-- <th class="text-center">Rating</th> -->
                 <th class="text-center">Description</th>
                 <th class="text-center">Status</th>
               </tr>
@@ -20,8 +18,6 @@
                   (click)="goToDetail(product.id)" 
                   class="product-row cursor-pointer">
                 <td class="align-middle">{{ product.name }}</td>
-                <!-- <td class="text-center align-middle">${{ product.price }}</td> -->
-                 <!-- <td class="text-center align-middle">{{ product.rating }}/5</td> -->
                 <td class="align-middle">{{ product.description }}</td> 
                 <td class="text-center align-middle">
                   <span class="badge" [ngClass]="product.inStock ? 'bg-success' : 'bg-danger'">
@@ -33,6 +29,9 @@
           </table>
         </div>
       </div>
+    </div>
+    <div class="text-center mt-4">
+      <button class="btn btn-outline-primary" (click)="goToTestCard()">Test Product Card</button>
     </div>
   </div>
 </div>
