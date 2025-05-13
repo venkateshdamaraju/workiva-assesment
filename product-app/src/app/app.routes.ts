@@ -21,7 +21,7 @@ export const routes: Routes = [
         name: 'Test MacBook Air',
         price: 1299,
         description: 'Test product description',
-        imageUrl: 'https://example.com/test-macbook-air.jpg',
+        imageUrl: 'assets/mbp.jpg',
         rating: 4.5,
         inStock: true
       }
