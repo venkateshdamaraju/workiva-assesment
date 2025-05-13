@@ -1,3 +1,4 @@
+// Basic product model
 export interface Product {
     id: number;
     name: string;

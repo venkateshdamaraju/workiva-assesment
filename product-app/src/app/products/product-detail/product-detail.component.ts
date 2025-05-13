@@ -15,8 +15,10 @@ import { ProductService } from '../product.service';
 export class ProductDetailComponent implements OnInit {
   product: Product | undefined;
 
+  // Inject the ActivatedRoute and ProductService in the constructor
   constructor(private route: ActivatedRoute, private productService: ProductService) {}
 
+  // Use the ngOnInit, a life cycle hook to fetch the product details
   ngOnInit(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
     this.productService.getProductById(id).subscribe({

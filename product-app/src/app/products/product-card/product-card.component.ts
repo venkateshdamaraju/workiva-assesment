@@ -34,6 +34,7 @@ import { CommonModule } from '@angular/common';
 export class ProductCardComponent {
   product!: Product;
 
+  // Inject the ActivatedRoute in the constructor to access route data
   constructor(private route: ActivatedRoute) {
     const data = this.route.snapshot.data['testProduct'];
     if (data) {
