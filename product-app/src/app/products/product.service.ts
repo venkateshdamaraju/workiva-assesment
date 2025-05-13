@@ -1,28 +1,47 @@
+// import { HttpClient } from '@angular/common/http';
+// import { Injectable } from '@angular/core';
+// import { Observable } from 'rxjs';
+// import { map } from 'rxjs/operators';
+
+// export interface Product {
+//   id: number;
+//   name: string;
+//   price: number;
+//   description: string;
+//   image: string;
+// }
+
+// @Injectable({ providedIn: 'root' })
+// export class ProductService {
+//   constructor(private http: HttpClient) {}
+
+//   getProducts(): Observable<Product[]> {
+//     return this.http.get<Product[]>('assets/products.json');
+//   }
+
+//   getProductById(id: number): Observable<Product | undefined> {
+//     return this.getProducts().pipe(
+//       map(products => products.find(p => p.id === id))
+//     );
+//   }
+// }
+
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable, map } from 'rxjs';
+import { Product } from './product.model';
 
-export interface Product {
-  id: number;
-  name: string;
-  price: number;
-  description: string;
-}
-
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable({ providedIn: 'root' })
 export class ProductService {
-  private products: Product[] = [
-    { id: 1, name: 'Laptop', price: 999, description: 'High performance laptop' },
-    { id: 2, name: 'Smartphone', price: 799, description: 'Latest model smartphone' },
-    { id: 3, name: 'Headphones', price: 199, description: 'Noise-cancelling headphones' }
-  ];
+  constructor(private http: HttpClient) {}
 
   getProducts(): Observable<Product[]> {
-    return of(this.products);
+    return this.http.get<Product[]>('assets/products.json');
   }
 
   getProductById(id: number): Observable<Product | undefined> {
-    return of(this.products.find(p => p.id === id));
+    return this.getProducts().pipe(
+      map(products => products.find(p => p.id === id))
+    );
   }
 }

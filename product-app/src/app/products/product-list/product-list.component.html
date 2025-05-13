@@ -1,5 +1,38 @@
-<h2>Product List</h2>
-
-<div *ngFor="let product of products">
-  <app-product-card [product]="product" (viewDetails)="goToDetail($event)" />
+<div class="row justify-content-center">
+  <div class="col-md-10 col-lg-8">
+    <h3 class="text-center mb-4">All Products</h3>
+    
+    <div class="card shadow">
+      <div class="card-body p-0">
+        <div class="table-responsive">
+          <table class="table table-hover mb-0">
+            <thead class="table-dark">
+              <tr>
+                <th class="text-center">Name</th>
+                <!-- <th class="text-center">Price</th> -->
+                <!-- <th class="text-center">Rating</th> -->
+                <th class="text-center">Description</th>
+                <th class="text-center">Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let product of products" 
+                  (click)="goToDetail(product.id)" 
+                  class="product-row cursor-pointer">
+                <td class="align-middle">{{ product.name }}</td>
+                <!-- <td class="text-center align-middle">${{ product.price }}</td> -->
+                 <!-- <td class="text-center align-middle">{{ product.rating }}/5</td> -->
+                <td class="align-middle">{{ product.description }}</td> 
+                <td class="text-center align-middle">
+                  <span class="badge" [ngClass]="product.inStock ? 'bg-success' : 'bg-danger'">
+                    {{ product.inStock ? 'In Stock' : 'Out of Stock' }}
+                  </span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

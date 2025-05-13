@@ -1,22 +1,27 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
-import { ProductService, Product } from '../product.service';
+import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
+import { Product } from '../product.model';
+import { ProductService } from '../product.service';
 
 @Component({
   selector: 'app-product-detail',
   standalone: true,
-  imports: [CommonModule],
   templateUrl: './product-detail.component.html',
-  styleUrls: ['./product-detail.component.css']
+  styleUrls: ['./product-detail.component.css'],
+  imports: [CommonModule, RouterModule]
 })
 export class ProductDetailComponent implements OnInit {
-  product?: Product;
+  product: Product | undefined;
 
-  constructor(private route: ActivatedRoute, private service: ProductService) {}
+  constructor(private route: ActivatedRoute, private productService: ProductService) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
-    this.service.getProductById(id).subscribe(p => this.product = p);
+    this.productService.getProductById(id).subscribe({
+      next: (data) => this.product = data,
+      error: () => console.error('Error loading product detail')
+    });
   }
 }
