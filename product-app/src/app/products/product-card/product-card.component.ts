@@ -22,6 +22,6 @@ export class ProductCardComponent {
   }
 
   onViewDetails(): void {
-    alert(`View Details for ID: ${this.product.id}`);
+    alert(`Viewing Details for Product ID: ${this.product.id}`);
   }
 }

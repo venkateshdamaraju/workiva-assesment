@@ -1,34 +1,47 @@
 <div class="row justify-content-center">
   <div class="col-md-8 col-lg-6">
     <div *ngIf="product" class="card shadow">
+
+      <!-- Title and Back Button -->
+      <div class="d-flex justify-content-between align-items-center p-3 border-bottom">
+        <h4 class="card-title mb-0">{{ product.name }}</h4>
+        <button class="btn btn-sm btn-outline-secondary" [routerLink]="['/']">Back to Products</button>
+      </div>
+
       <!-- Product Image -->
       <img [src]="product.image" class="card-img-top" alt="{{ product.name }}">
-      
+
       <!-- Product Details -->
       <div class="card-body">
-        <h4 class="card-title text-center mb-3">{{ product.name }}</h4>
-        
+
         <div class="d-flex justify-content-between align-items-center mb-3">
           <span class="badge bg-primary rounded-pill px-3 py-2">
             <h5 class="mb-0">${{ product.price }}</h5>
           </span>
-          <button class="btn btn-outline-secondary" [routerLink]="['/']">Back to Products</button>
         </div>
-        
+
+        <!-- Star Rating -->
         <div class="d-flex align-items-center mb-3">
-          <div class="me-2">
-            <span class="fw-bold">Rating:</span> {{ product.rating }}/5.0
-          </div>
+          <span class="fw-bold me-2">Rating:</span>
           <div class="stars">
-            <i *ngFor="let star of [1,2,3,4,5]" 
-               class="bi" 
-                [ngClass]="{'bi-star-fill': star <= product.rating, 'bi-star': star > product.rating}"
-               style="color: #ffc107;"></i>
+            <ng-container *ngFor="let star of [1, 2, 3, 4, 5]">
+              <i class="bi"
+                 [ngClass]="{
+                   'bi-star-fill': star <= product.rating,
+                   'bi-star-half': star > product.rating && star - product.rating < 1,
+                   'bi-star': star - product.rating >= 1
+                 }"
+                 style="color: #ffc107;"></i>
+            </ng-container>
+            
+            <span class="ms-2">({{ product.rating }})</span>
           </div>
         </div>
-        
+
+        <!-- Description -->
         <p class="card-text">{{ product.description }}</p>
-        
+
+        <!-- Stock Badge -->
         <div class="mt-3">
           <span class="badge" [ngClass]="product.inStock ? 'bg-success' : 'bg-danger'">
             {{ product.inStock ? 'In Stock' : 'Out of Stock' }}
@@ -36,8 +49,8 @@
         </div>
       </div>
     </div>
-    
-    <!-- Loading/Error State -->
+
+    <!-- Loading State -->
     <div *ngIf="!product" class="text-center p-5">
       <div class="spinner-border text-primary" role="status">
         <span class="visually-hidden">Loading...</span>

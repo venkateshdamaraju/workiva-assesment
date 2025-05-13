@@ -14,6 +14,8 @@ import { ProductService } from '../product.service';
 })
 export class ProductDetailComponent implements OnInit {
   product: Product | undefined;
+  Math = Math;            
+  Number = Number;   
 
   // Inject the ActivatedRoute and ProductService in the constructor
   constructor(private route: ActivatedRoute, private productService: ProductService) {}

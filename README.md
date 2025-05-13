@@ -53,7 +53,13 @@ git clone https://github.com/venkateshdamaraju/workiva-assesment.git
 cd workiva-assesment/product-app
 ```
 
-### 2. Install Dependencies
+### 2. Install Angular
+
+```bash
+npm install -g @angular/cli@latest
+```
+
+### 3. Install Dependencies
 
 ```bash
 npm install
@@ -63,7 +69,7 @@ This will install Angular core packages and additional libraries like:
 - **Bootstrap** (for layout and UI)
 - **Bootstrap Icons** (for rating stars)
 
-### 3. Add Bootstrap & Icons (if not already in `angular.json`)
+### 4. Add Bootstrap & Icons (if not already in `angular.json`)
 
 Ensure `angular.json` includes:
 
@@ -81,7 +87,7 @@ Or add via CLI:
 npm install bootstrap bootstrap-icons
 ```
 
-### 4. Run the Application
+### 5. Run the Application
 
 ```bash
 ng serve

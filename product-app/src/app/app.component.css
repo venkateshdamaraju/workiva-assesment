@@ -11,3 +11,7 @@ body {
   .bg-custom{
     background-color: #88e788;
   }
+
+  .bgwhite{
+    color: white
+  }

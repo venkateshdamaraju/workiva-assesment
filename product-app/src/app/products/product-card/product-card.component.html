@@ -15,15 +15,19 @@
         </div>
 
         <div class="d-flex align-items-center mb-3">
-          <div class="me-2">
-            <!-- Product Rating -->
-            <span class="fw-bold">Rating:</span> {{ product.rating }}/5.0
-          </div>
+          <span class="fw-bold me-2">Rating:</span>
           <div class="stars">
-            <i *ngFor="let star of [1,2,3,4,5]" 
-               class="bi"
-               [ngClass]="{ 'bi-star-fill': star <= product.rating, 'bi-star': star > product.rating }"
-               style="color: #ffc107;"></i>
+            <ng-container *ngFor="let star of [1, 2, 3, 4, 5]">
+              <i class="bi"
+                 [ngClass]="{
+                   'bi-star-fill': star <= product.rating,
+                   'bi-star-half': star > product.rating && star - product.rating < 1,
+                   'bi-star': star - product.rating >= 1
+                 }"
+                 style="color: #ffc107;"></i>
+            </ng-container>
+            
+            <span class="ms-2">({{ product.rating }})</span>
           </div>
         </div>
 
